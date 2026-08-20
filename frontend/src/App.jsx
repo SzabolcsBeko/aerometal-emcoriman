@@ -48,8 +48,8 @@ export default function App() {
             title="Components"
             api={componentApi}
             fields={[
-              { name: "name", label: "Name" },
-              { name: "description", label: "Description", required: false },
+              { name: "name", label: "Name", readOnlyOnEdit: true },
+              { name: "description", label: "Description", required: true },
             ]}
           />
         )}{" "}
@@ -58,7 +58,7 @@ export default function App() {
             title="Rights"
             api={accessRightApi}
             fields={[
-              { name: "name", label: "Name" },
+              { name: "name", label: "Name", readOnlyOnEdit: true },
               { name: "description", label: "Description", required: false },
             ]}
           />

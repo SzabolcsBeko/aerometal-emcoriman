@@ -65,8 +65,9 @@ export default function OverviewListPage() {
 
       <div className="filter-row">
         <div className="filter-group">
-          <label>Employee</label>
+          <label htmlFor="overview-employee">Employee</label>
           <select
+            id="overview-employee"
             value={employeeId}
             onChange={(event) => setEmployeeId(event.target.value)}
           >
@@ -80,8 +81,9 @@ export default function OverviewListPage() {
         </div>
 
         <div className="filter-group">
-          <label>Component</label>
+          <label htmlFor="overview-component">Component</label>
           <select
+            id="overview-component"
             value={componentId}
             onChange={(event) => setComponentId(event.target.value)}
           >

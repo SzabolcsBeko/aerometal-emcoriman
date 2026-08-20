@@ -25,3 +25,4 @@ com\aerometal\assignmentmanager\AccessManagerApplication.class
 com\aerometal\assignmentmanager\controller\ComponentController.class
 com\aerometal\assignmentmanager\repository\EmployeeRepository.class
 com\aerometal\assignmentmanager\service\AccessRightService.class
+com\aerometal\assignmentmanager\exception\AccessRightNotFoundException.class

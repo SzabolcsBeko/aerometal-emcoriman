@@ -9,9 +9,22 @@ export default function EntityManager({ title, api, fields }) {
   useEffect(() => {
     load();
   }, []);
+
   const submit = async (e) => {
     e.preventDefault();
     setError("");
+
+    const emptyRequiredField = fields.find(
+      (field) =>
+        field.required !== false &&
+        String(form[field.name] ?? "").trim() === "",
+    );
+
+    if (emptyRequiredField) {
+      setError(`${emptyRequiredField.label} is required`);
+      return;
+    }
+
     try {
       editing ? await api.update(editing, form) : await api.create(form);
       setForm(empty);
@@ -48,6 +61,10 @@ export default function EntityManager({ title, api, fields }) {
               value={form[f.name]}
               onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
               required={f.required !== false}
+              readOnly={editing !== null && Boolean(f.readOnlyOnEdit)}
+              className={
+                editing !== null && f.readOnlyOnEdit ? "readonly-field" : ""
+              }
             />
           </label>
         ))}

@@ -232,3 +232,8 @@ th {
 .export-button {
   margin-bottom: 20px;
 }
+
+.readonly-field {
+  background-color: #e5e7eb;
+  cursor: not-allowed;
+}
