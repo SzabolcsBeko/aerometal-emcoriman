@@ -59,7 +59,8 @@ public class AssignmentService {
 		try (Workbook wb = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
 			Sheet sheet = wb.createSheet("Assignments");
 			Row h = sheet.createRow(0);
-			String[] heads = { "ID", "Employee", "Component", "Right" };
+			String[] heads = { "ID", "Component", "Employee First Name", "Employee Last Name", "Employee Email",
+					"Right" };
 			for (int i = 0; i < heads.length; i++)
 				h.createCell(i).setCellValue(heads[i]);
 			int rn = 1;
@@ -82,7 +83,8 @@ public class AssignmentService {
 	}
 
 	private AssignmentResponse toDto(Assignment a) {
-		return new AssignmentResponse(a.getId(), a.getEmployee().getId(), a.getEmployee().getFirstName(),a.getEmployee().getLastName(), a.getEmployee().getEmail(),
-				a.getComponent().getId(), a.getComponent().getName(), a.getRight().getId(), a.getRight().getName());
+		return new AssignmentResponse(a.getId(), a.getEmployee().getId(), a.getEmployee().getFirstName(),
+				a.getEmployee().getLastName(), a.getEmployee().getEmail(), a.getComponent().getId(),
+				a.getComponent().getName(), a.getRight().getId(), a.getRight().getName());
 	}
 }

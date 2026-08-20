@@ -1,6 +1,7 @@
 package com.aerometal.assignmentmanager.service;
 
 import com.aerometal.assignmentmanager.entity.Component;
+import com.aerometal.assignmentmanager.exception.ComponentNotFoundException;
 import com.aerometal.assignmentmanager.repository.ComponentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +24,7 @@ public class ComponentService {
     @Transactional(readOnly = true)
     public Component findById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Component not found: " + id));
+                .orElseThrow(() -> new ComponentNotFoundException(id));
     }
 
     @Transactional

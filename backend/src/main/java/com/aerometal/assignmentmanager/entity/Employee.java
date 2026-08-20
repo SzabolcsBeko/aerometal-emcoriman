@@ -1,5 +1,6 @@
 package com.aerometal.assignmentmanager.entity;
 
+
 import java.time.LocalDate;
 
 import jakarta.persistence.*;

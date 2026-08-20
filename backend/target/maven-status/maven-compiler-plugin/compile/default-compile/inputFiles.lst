@@ -13,6 +13,9 @@ D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-r
 D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\entity\Component.java
 D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\entity\Employee.java
 D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\exception\ApiExceptionHandler.java
+D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\exception\ComponentNotFoundException.java
+D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\exception\EmployeeNotFoundException.java
+D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\mapper\EmployeeMapper.java
 D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\repository\AccessRightRepository.java
 D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\repository\AssignmentRepository.java
 D:\sts-workspace-aerometal\employee-component-right-manager\employee-component-right-manager\backend\src\main\java\com\aerometal\assignmentmanager\repository\ComponentRepository.java
