@@ -5,9 +5,9 @@ Full-stack example with Spring Boot + MySQL backend and React + Vite frontend.
 ## Model
 - Employee(id, name, email)
 - Component(id, name, description)
-- Right(id, name, description), persisted in `app_right` because RIGHT is a SQL keyword
-- AccessAssignment(id, employee, component, right)
-- Unique DB constraint: `(employee_id, component_id, right_id)`
+- AccessRight(id, name, description), persisted in `access_right` because RIGHT is a SQL keyword
+- Assignment(id, employee, component, right)
+- Unique DB constraint: `(employee_id, component_id, access_right_id)`
 
 ## Run
 1. Install Java 21, Maven, Node.js and MySQL.
