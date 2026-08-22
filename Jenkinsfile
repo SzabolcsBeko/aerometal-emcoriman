@@ -61,7 +61,7 @@ pipeline {
     post {
         success {
             echo '===== BUILD SUCCESSFUL ====='
-            archiveArtifacts artifacts: 'target/*.jar',
+            archiveArtifacts artifacts: 'backend/target/*.jar',
                              fingerprint: true
         }
 
