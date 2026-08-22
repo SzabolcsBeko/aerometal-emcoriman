@@ -32,24 +32,28 @@ pipeline {
 
         stage('Check Project') {
             steps {
-                bat '''
-                    echo ===== PROJECT DIRECTORY =====
-                    cd
-                    dir
-                    echo ===== POM.XML =====
-                    if exist pom.xml (
-                        echo pom.xml FOUND
-                    ) else (
-                        echo ERROR: pom.xml NOT FOUND
-                        exit /b 1
-                    )
-                '''
+                dir('backend') {
+                    bat '''
+                        echo ===== PROJECT DIRECTORY =====
+                        cd
+                        dir
+                        echo ===== POM.XML =====
+                        if exist pom.xml (
+                            echo pom.xml FOUND
+                        ) else (
+                            echo ERROR: pom.xml NOT FOUND
+                            exit /b 1
+                        )
+                    '''
+                }
             }
         }
 
         stage('Maven Build') {
             steps {
-                bat 'mvn clean package'
+                dir('backend') {
+                    bat 'mvn clean package'
+                }
             }
         }
     }
