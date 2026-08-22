@@ -1,17 +1,28 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK21'
-        maven 'Maven3'
-        nodejs 'NodeJS'
-    }
-
-    environment {
-        CI = 'true'
-    }
-
     stages {
+
+        stage('Environment Check') {
+            steps {
+                bat '''
+                    echo ===== CURRENT DIRECTORY =====
+                    cd
+
+                    echo ===== DIRECTORY CONTENT =====
+                    dir
+
+                    echo ===== JAVA =====
+                    java -version
+
+                    echo ===== MAVEN =====
+                    mvn -version
+
+                    echo ===== GIT =====
+                    git --version
+                '''
+            }
+        }
 
         stage('Checkout') {
             steps {
@@ -19,58 +30,39 @@ pipeline {
             }
         }
 
-        stage('Environment') {
+        stage('Check Project') {
             steps {
-                bat 'java -version'
-                bat 'mvn -version'
-                bat 'node --version'
-                bat 'npm --version'
+                bat '''
+                    echo ===== PROJECT DIRECTORY =====
+                    cd
+                    dir
+                    echo ===== POM.XML =====
+                    if exist pom.xml (
+                        echo pom.xml FOUND
+                    ) else (
+                        echo ERROR: pom.xml NOT FOUND
+                        exit /b 1
+                    )
+                '''
             }
         }
 
-        stage('Backend Test') {
+        stage('Maven Build') {
             steps {
-                bat 'mvn test'
-            }
-        }
-
-        stage('Backend Package') {
-            steps {
-                bat 'mvn package -DskipTests'
-            }
-        }
-
-        stage('Frontend Install') {
-            steps {
-                dir('frontend') {
-                    bat 'npm ci'
-                }
-            }
-        }
-
-        stage('Frontend Build') {
-            steps {
-                dir('frontend') {
-                    bat 'npm run build'
-                }
+                bat 'mvn clean package'
             }
         }
     }
 
     post {
-
-        always {
-            junit allowEmptyResults: true,
-                  testResults: 'target/surefire-reports/*.xml'
-        }
-
         success {
+            echo '===== BUILD SUCCESSFUL ====='
             archiveArtifacts artifacts: 'target/*.jar',
                              fingerprint: true
         }
 
         failure {
-            echo 'Build failed.'
+            echo '===== BUILD FAILED ====='
         }
     }
 }
